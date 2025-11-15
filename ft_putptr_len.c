@@ -10,13 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ftprintf.h"
 
 int	ft_putptr_len(void *ptr)
 {
 	unsigned long long	address;
 	int					count;
 
+	if (!ptr)
+	{
+		write (1, "(nil)", 5);
+		return (5);
+	}
 	address = (unsigned long long)ptr;
 	count = 0;
 	count += ft_putstr_len("0x");
