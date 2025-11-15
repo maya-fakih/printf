@@ -1,35 +1,49 @@
-#include <stdarg.h>
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfakih <mfakih@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/15 22:55:24 by mfakih            #+#    #+#             */
+/*   Updated: 2025/11/15 22:55:25 by mfakih           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int type(char c, va_list list)
+#include "libftprintf.h"
+
+static int	type(char c, va_list list)
 {
-    int count;
+	int	count;
 
-    count = 0;
-    if (c == 'c')
-		count = ft_putchar_len(va_arg(list, int), 1); 
-    else if (c == 's')
-        count = ft_putstr_len(va_arg(list, char *)); 
-    else if (c == 'd' || c == 'i')
-        count = ft_putnbr_len(va_arg(list, int));
-    else if (c == 'u')
-        count = ft_putunsigned_len(va_arg(list, unsigned int)); 
-    else if (c == 'x')
-        count = ft_puthex_len(va_arg(list, unsigned int), 0); // 0 for lowercase
-    else if (c == 'X')
-        count = ft_puthex_len(va_arg(list, unsigned int), 1); // 1 for uppercase
-    else if (c == 'p')
-        count = ft_putptr_len(va_arg(list, void *));
-    else if (c == '%')
-        count = ft_putchar_len('%', 1);
-    
-    return (count);
+	count = 0;
+	if (c == 'c')
+		count = ft_putchar_len(va_arg(list, int));
+	else if (c == 's')
+		count = ft_putstr_len(va_arg(list, char *));
+	else if (c == 'd' || c == 'i')
+		count = ft_putnbr_len(va_arg(list, int));
+	else if (c == 'u')
+		count = ft_putnbr_base_len(va_arg(list, unsigned int),
+				"0123456789");
+	else if (c == 'x')
+		count = ft_putnbr_base_len(va_arg(list, unsigned int),
+				"0123456789abcdef");
+	else if (c == 'X')
+		count = ft_putnbr_base_len(va_arg(list, unsigned int),
+				"0123456789ABCDEF");
+	else if (c == 'p')
+		count = ft_putptr_len(va_arg(list, void *));
+	else if (c == '%')
+		count = ft_putchar_len('%');
+	return (count);
 }
+
 int	ft_printf(const char *s, ...)
 {
-	va_list list;
-	int i;
-	int count;
+	va_list	list;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -37,16 +51,18 @@ int	ft_printf(const char *s, ...)
 	while (s[i])
 	{
 		if (s[i] != '%')
-		{	
-			ft_putchar_fd(s[i++], 1);
+		{
+			ft_putchar_len(s[i]);
 			count++;
 		}
 		else
-		{	
+		{
 			i++;
-			
+			if (s[i])
+				count += type(s[i], list);
 		}
+		i++;
 	}
-	
 	va_end(list);
+	return (count);
 }

@@ -1,32 +1,30 @@
-Name = libftprintf.a
+NAME = libftprintf.a
 CC = cc
-RM = rm -f
-AR = ar rcs
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c
+
+SRCS = ft_printf.c \
+	   ft_putnbr_base_len.c \
+	   ft_putnbr_len.c \
+	   ft_putptr_len.c \
+	   ft_putchar_len.c \
+	   ft_putstr_len.c
+
 OBJS = $(SRCS:.c=.o)
+INCLUDES = -I.
 
 all: $(NAME)
 
-$(LIBFT):
-	@make -C $(LIBFT_DIR)
-
-$(NAME): $(LIBFT) $(OBJS)
-	@cp $(LIBFT) $(NAME)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	$(AR) rcs $@ $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@make -C $(LIBFT_DIR) clean
-	$(RM) $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	@make -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

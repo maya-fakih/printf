@@ -1,7 +1,19 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_len.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfakih <mfakih@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/15 22:54:04 by mfakih            #+#    #+#             */
+/*   Updated: 2025/11/15 22:54:06 by mfakih           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int 	ft_putchar_len(char c, int fd)
+#include "libftprintf.h"
+
+int	ft_putchar_len(char c)
 {
-	ft_putchar_fd(c, fd);
+	write (1, &c, 1);
 	return (1);
 }

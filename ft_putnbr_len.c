@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfakih <mfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 01:00:45 by mfakih            #+#    #+#             */
-/*   Updated: 2025/11/12 01:00:47 by mfakih           ###   ########.fr       */
+/*   Created: 2025/11/15 23:05:11 by mfakih            #+#    #+#             */
+/*   Updated: 2025/11/15 23:05:12 by mfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_putnbr_len(int n)
 {
-	ft_putstr_fd(s, fd);
-	write (fd, "\n", 1);
+	int long	nn;
+	int			i;
+
+	nn = n;
+	i = 0;
+	if (nn < 0)
+	{
+		write (1, "-", 1);
+		nn *= -1;
+		i = 1;
+	}
+	return (ft_putnbr_base_len((unsigned long long)nn, "0123456789") + i);
 }
