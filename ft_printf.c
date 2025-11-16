@@ -6,11 +6,11 @@
 /*   By: mfakih <mfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:55:24 by mfakih            #+#    #+#             */
-/*   Updated: 2025/11/15 22:55:25 by mfakih           ###   ########.fr       */
+/*   Updated: 2025/11/16 10:17:31 by mfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 static int	type(char c, va_list list)
 {

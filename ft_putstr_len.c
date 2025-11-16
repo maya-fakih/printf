@@ -6,11 +6,11 @@
 /*   By: mfakih <mfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 22:54:52 by mfakih            #+#    #+#             */
-/*   Updated: 2025/11/16 10:00:29 by mfakih           ###   ########.fr       */
+/*   Updated: 2025/11/16 10:18:14 by mfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr_len(char *s)
 {

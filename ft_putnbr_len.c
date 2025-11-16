@@ -6,11 +6,11 @@
 /*   By: mfakih <mfakih@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 23:05:11 by mfakih            #+#    #+#             */
-/*   Updated: 2025/11/15 23:05:12 by mfakih           ###   ########.fr       */
+/*   Updated: 2025/11/16 10:18:07 by mfakih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_len(int n)
 {
